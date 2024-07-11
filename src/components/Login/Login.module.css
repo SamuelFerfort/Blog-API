@@ -1,0 +1,28 @@
+main {
+  display: grid;
+  place-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+button {
+    font-size: 20px;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 4px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+form > div > input {
+  height: 25px;
+  padding: 3px 10px;
+}

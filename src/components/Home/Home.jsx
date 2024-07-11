@@ -12,18 +12,20 @@ export default function Home() {
     return <span>Loading...</span>;
   }
 
-  if (error) return <h1>Error fetching data {error.message}</h1>;
+  if (error) return <h1>Error fetching data {error}</h1>;
 
   return (
     <main>
-      {posts.map((post) => {
-        return (
-          <article key={post._id}>
-            <h1>{post.title}</h1>
-            <p>{post.summary}</p>
-          </article>
-        );
-      })}
+      <div className={styles["posts-container"]}>
+        {posts.map((post) => {
+          return (
+            <article key={post._id}>
+              <h1>{post.title}</h1>
+              <p>{post.summary}</p>
+            </article>
+          );
+        })}
+      </div>
     </main>
   );
 }
