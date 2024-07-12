@@ -3,6 +3,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import { createBrowserRouter } from "react-router-dom";
 import Register from "./Pages/Register/Register";
+import Post from "./Pages/Post/Post";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         path: "sign-up",
         element: <Register />,
       },
+      {
+        path: "post/:id",
+        element: <Post />,
+      }
     ],
   },
 ]);

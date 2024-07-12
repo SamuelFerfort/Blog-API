@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { jwtDecode } from "jwt-decode";
+import PropTypes from "prop-types";
+
 
 const AuthContext = createContext(null);
 
@@ -38,11 +40,10 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json()
+      const data = await response.json();
 
-      if(!response.ok) throw new Error(data.message || "Unexpected error") 
-
-      } catch (err) {
+      if (!response.ok) throw new Error(data.message || "Unexpected error");
+    } catch (err) {
       setError(err.message);
       throw err;
     } finally {
@@ -89,10 +90,17 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading, error, register }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, loading, error, register }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 
 export const useAuth = () => useContext(AuthContext);

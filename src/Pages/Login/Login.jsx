@@ -6,7 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({ email: false, password: false });
+  const [error, setError] = useState({ email: false, password: false, general: false });
   const { login, loading } = useAuth();
   const navigate = useNavigate();
   async function handleSubmit(e) {

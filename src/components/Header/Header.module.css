@@ -6,6 +6,10 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-
 }
 
+.logo {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+}

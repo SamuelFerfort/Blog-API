@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <header>
-      <Link to="/">My Blog</Link>
+      <Link to="/" className={styles.logo}>My Blog</Link>
 
       {user ? (
         <>

@@ -1,6 +1,6 @@
 import useFetch from "../../hooks/useFetch";
 import styles from "./Home.module.css";
-
+import { Link } from "react-router-dom";
 export default function Home() {
   const {
     data: posts,
@@ -19,10 +19,13 @@ export default function Home() {
       <div className={styles["posts-container"]}>
         {posts.map((post) => {
           return (
-            <article key={post._id}>
+            <Link key={post._id} to={`/post/${post._id}`}>
+            <article >
               <h1>{post.title}</h1>
               <p>{post.summary}</p>
             </article>
+            </Link>
+            
           );
         })}
       </div>
