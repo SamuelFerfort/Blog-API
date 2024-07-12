@@ -24,6 +24,31 @@ export const AuthProvider = ({ children }) => {
 
     checkLoggedIn();
   }, []);
+
+  const register = async (formData) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("http://localhost:3000/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json()
+
+      if(!response.ok) throw new Error(data.message || "Unexpected error") 
+
+      } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
   const login = async (credentials) => {
     setLoading(true);
     setError(null);
@@ -53,7 +78,7 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.error("Login error", err);
       setError(err.message);
-      throw err
+      throw err;
     } finally {
       setLoading(false);
     }
@@ -64,7 +89,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading, error }}>
+    <AuthContext.Provider value={{ user, login, logout, loading, error, register }}>
       {children}
     </AuthContext.Provider>
   );

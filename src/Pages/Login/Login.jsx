@@ -1,13 +1,13 @@
 import styles from "./Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from "../../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ email: false, password: false });
-  const { login, loading,} = useAuth();
+  const { login, loading } = useAuth();
   const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
@@ -43,6 +43,7 @@ export default function Login() {
             name="email"
             id="email"
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
             required
           />
           {error.email && <span className={styles.error}>Invalid Email</span>}
@@ -55,6 +56,7 @@ export default function Login() {
             id="password"
             onChange={(e) => setPassword(e.target.value)}
             required
+            value={password}
             min="6"
           />
           {error.password && (

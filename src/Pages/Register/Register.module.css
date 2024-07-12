@@ -12,6 +12,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: 300px;
   }
   button {
       font-size: 20px;
@@ -25,4 +26,8 @@ main {
   form > div > input {
     height: 25px;
     padding: 3px 10px;
+  }
+
+  .error {
+    color: red;
   }
