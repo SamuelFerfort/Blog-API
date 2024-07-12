@@ -7,7 +7,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ email: false, password: false });
-  const { login, loading, error: authError } = useAuth();
+  const { login, loading,} = useAuth();
   const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
@@ -64,7 +64,6 @@ export default function Login() {
           )}
         </div>
         {error.general && <div className={styles.error}>{error.general}</div>}
-        {authError && <div className={styles.error}>{authError}</div>}
         {loading && <div>Loading...</div>}
         <div>
           <button type="submit">Log In</button>

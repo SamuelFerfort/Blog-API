@@ -53,6 +53,7 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.error("Login error", err);
       setError(err.message);
+      throw err
     } finally {
       setLoading(false);
     }
