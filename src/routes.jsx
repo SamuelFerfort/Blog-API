@@ -1,9 +1,9 @@
 import App from "./App";
-import Home from "./Pages/Home/Home";
-import Login from "./Pages/Login/Login";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
 import { createBrowserRouter } from "react-router-dom";
-import Register from "./Pages/Register/Register";
-import Post from "./Pages/Post/Post";
+import Register from "./Pages/Register";
+import Post from "./Pages/Post";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       {
         path: "post/:postId",
         element: <Post />,
-      }
+      },
     ],
   },
 ]);

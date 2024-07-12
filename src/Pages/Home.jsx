@@ -1,6 +1,6 @@
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
-import PostPreview from "../../components/PostPreview/PostPreview";
+import PostPreview from "../components/PostPreview";
 export default function Home() {
   const {
     data: posts,
@@ -15,10 +15,10 @@ export default function Home() {
       </main>
     );
   }
-  if (error) {
+  if (error || !posts) {
     return (
       <main className="flex justify-center items-center h-screen">
-        <p className="text-lg text-red-600">{error}</p>
+        <p className="text-lg text-red-600">Error Fetching posts</p>
       </main>
     );
   }
