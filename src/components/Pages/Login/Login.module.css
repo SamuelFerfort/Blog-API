@@ -26,3 +26,8 @@ form > div > input {
   height: 25px;
   padding: 3px 10px;
 }
+
+
+.error {
+  color: red;
+}
