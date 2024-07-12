@@ -1,6 +1,6 @@
 import useFetch from "../../hooks/useFetch";
-import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
+import PostPreview from "../../components/PostPreview/PostPreview";
 export default function Home() {
   const {
     data: posts,
@@ -9,23 +9,28 @@ export default function Home() {
   } = useFetch("http://localhost:3000/api/posts");
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return (
+      <main className="flex justify-center mt-10">
+        <p className="text-lg font-semibold">Loading...</p>
+      </main>
+    );
+  }
+  if (error) {
+    return (
+      <main className="flex justify-center items-center h-screen">
+        <p className="text-lg text-red-600">{error}</p>
+      </main>
+    );
   }
 
-  if (error) return <h1>Error fetching data {error}</h1>;
-
   return (
-    <main>
-      <div className={styles["posts-container"]}>
+    <main className="p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {posts.map((post) => {
           return (
             <Link key={post._id} to={`/post/${post._id}`}>
-            <article >
-              <h1>{post.title}</h1>
-              <p>{post.summary}</p>
-            </article>
+              <PostPreview post={post} />
             </Link>
-            
           );
         })}
       </div>
