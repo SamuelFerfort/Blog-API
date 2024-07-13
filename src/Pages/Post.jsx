@@ -20,12 +20,12 @@ export default function Post() {
 
   if (error) {
     return (
-      <main className="flex justify-center items-center h-screen bg-gray-900">
+      <main className="flex justify-center">
         <p className="text-lg text-red-400">{error}</p>
       </main>
     );
   }
-
+  
   return (
     <main className="max-w-4xl mx-auto rounded-lg bg-gray-900 text-gray-200 p-6">
       <Article post={post} />
