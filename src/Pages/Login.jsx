@@ -15,7 +15,6 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     setError({ email: false, password: false, general: "" });
 
     if (!email.includes("@")) {
@@ -38,16 +37,16 @@ export default function Login() {
   }
 
   return (
-    <main className="flex justify-center items-center  pt-32">
+    <main className="flex justify-center mt-36 bg-gray-900 ">
       <form
-        className="w-full max-w-md bg-white p-8 rounded-lg shadow-md"
+        className="w-full max-w-md bg-gray-800 p-8 rounded-lg shadow-md"
         method="post"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-2xl font-bold mb-6">Log In</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-100">Log In</h1>
 
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">
+          <label htmlFor="email" className="block text-gray-300">
             Email
           </label>
           <input
@@ -57,15 +56,15 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             required
-            className="w-full p-2 mt-2 border border-gray-300 rounded"
+            className="w-full p-2 mt-2 border border-gray-700 rounded bg-gray-700 text-gray-100"
           />
           {error.email && (
-            <span className="text-red-500 text-sm">Invalid Email</span>
+            <span className="text-red-400 text-sm">Invalid Email</span>
           )}
         </div>
 
         <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700">
+          <label htmlFor="password" className="block text-gray-300">
             Password
           </label>
           <input
@@ -75,32 +74,32 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             required
             value={password}
-            className="w-full p-2 mt-2 border border-gray-300 rounded"
+            className="w-full p-2 mt-2 border border-gray-700 rounded bg-gray-700 text-gray-100"
           />
           {error.password && (
-            <span className="text-red-500 text-sm">
+            <span className="text-red-400 text-sm">
               Password must be at least 6 characters
             </span>
           )}
         </div>
 
         {error.general && (
-          <div className="text-red-500 text-sm mb-4">{error.general}</div>
+          <div className="text-red-400 text-sm mb-4">{error.general}</div>
         )}
-        {loading && <div className="text-gray-500 mb-4">Loading...</div>}
+        {loading && <div className="text-gray-400 mb-4">Loading...</div>}
 
         <div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-300"
+            className="w-full bg-purple-600 text-white p-2 rounded hover:bg-purple-700 transition duration-300"
           >
             Log In
           </button>
         </div>
 
-        <p className="mt-4">
+        <p className="mt-4 text-gray-400">
           No account?{" "}
-          <Link to="/sign-up" className="text-blue-500 hover:underline">
+          <Link to="/sign-up" className="text-purple-400 hover:underline">
             Sign Up
           </Link>
         </p>

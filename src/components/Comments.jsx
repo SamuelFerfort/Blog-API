@@ -70,18 +70,20 @@ export default function Comments() {
   }
 
   return (
-    <section className="border-t pt-4">
-      <h1 className="text-2xl font-semibold mb-4">Comments</h1>
+    <section className="border-t border-gray-700 pt-4">
+      <h1 className="text-2xl font-semibold mb-4 text-gray-100">Comments</h1>
 
       <div className="flex flex-col space-y-4">
         {sortedComments.map((comment) => {
           return (
             <article
               key={comment._id}
-              className="p-4 bg-white rounded-lg flex flex-col gap-3 shadow-lg"
+              className="p-4 bg-gray-800 rounded-lg flex flex-col gap-3 shadow-lg"
             >
-              <h1 className="text-xl font-medium">{comment.author.name}</h1>
-              <p className="text-gray-700">{comment.content}</p>
+              <h1 className="text-xl font-medium text-gray-200">
+                {comment.author.name}
+              </h1>
+              <p className="text-gray-300">{comment.content}</p>
               <p className="text-gray-500 text-sm">
                 {dateFormatter(comment.createdAt)}
               </p>
@@ -98,7 +100,7 @@ export default function Comments() {
         <input
           type="text"
           name="content"
-          className="h-10 p-2 border rounded-md"
+          className="h-10 p-2 border border-gray-600 rounded-md bg-gray-700 text-gray-200"
           id="content"
           value={newComment}
           onChange={handleChange}
@@ -106,7 +108,7 @@ export default function Comments() {
         />
         <button
           type="submit"
-          className="self-start px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          className="self-start px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
         >
           Add Comment
         </button>

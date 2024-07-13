@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  --tw-bg-opacity: 1;
-  background-color: rgba(243, 244, 246, 0.699) /* #f3f4f6 */;
-  height: 100vh;
+@layer base {
+  body {
+    @apply bg-gray-900 text-gray-200;
+  }
 }

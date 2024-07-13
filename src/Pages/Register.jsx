@@ -56,16 +56,16 @@ export default function Register() {
   };
 
   return (
-    <main className="flex items-center justify-center  pt-32 bg-gray-100">
+    <main className="flex  justify-center mt-36 bg-gray-900 ">
       <form
-        className="w-full max-w-md bg-white p-8 rounded-lg shadow-md"
+        className="w-full max-w-md bg-gray-800 p-8 rounded-lg shadow-md"
         method="post"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-2xl font-bold mb-6">Sign Up</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-100">Sign Up</h1>
 
         <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-700">
+          <label htmlFor="name" className="block text-gray-300">
             Name
           </label>
           <input
@@ -74,15 +74,15 @@ export default function Register() {
             id="name"
             onChange={handleChange}
             value={formData.name}
-            className="w-full p-2 mt-2 border border-gray-300 rounded"
+            className="w-full p-2 mt-2 border border-gray-700 rounded bg-gray-700 text-gray-100"
           />
           {errors.name && (
-            <span className="text-red-500 text-sm">{errors.name}</span>
+            <span className="text-red-400 text-sm">{errors.name}</span>
           )}
         </div>
 
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">
+          <label htmlFor="email" className="block text-gray-300">
             Email
           </label>
           <input
@@ -91,15 +91,15 @@ export default function Register() {
             id="email"
             onChange={handleChange}
             value={formData.email}
-            className="w-full p-2 mt-2 border border-gray-300 rounded"
+            className="w-full p-2 mt-2 border border-gray-700 rounded bg-gray-700 text-gray-100"
           />
           {errors.email && (
-            <span className="text-red-500 text-sm">{errors.email}</span>
+            <span className="text-red-400 text-sm">{errors.email}</span>
           )}
         </div>
 
         <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700">
+          <label htmlFor="password" className="block text-gray-300">
             Password
           </label>
           <input
@@ -108,30 +108,30 @@ export default function Register() {
             id="password"
             onChange={handleChange}
             value={formData.password}
-            className="w-full p-2 mt-2 border border-gray-300 rounded"
+            className="w-full p-2 mt-2 border border-gray-700 rounded bg-gray-700  text-gray-100"
           />
           {errors.password && (
-            <span className="text-red-500 text-sm">{errors.password}</span>
+            <span className="text-red-400 text-sm">{errors.password}</span>
           )}
         </div>
 
         {errors.general && (
-          <div className="text-red-500 text-sm mb-4">{errors.general}</div>
+          <div className="text-red-400 text-sm mb-4">{errors.general}</div>
         )}
-        {loading && <div className="text-gray-500 mb-4">Loading...</div>}
+        {loading && <div className="text-gray-400 mb-4">Loading...</div>}
 
         <div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-300"
+            className="w-full bg-purple-600 text-white p-2 rounded hover:bg-purple-700 transition duration-300"
           >
             Sign Up
           </button>
         </div>
 
-        <p className="mt-4">
+        <p className="mt-4 text-gray-400">
           Already have an account?{" "}
-          <Link to="/login" className="text-blue-500 hover:underline">
+          <Link to="/login" className="text-purple-400 hover:underline">
             Log In
           </Link>
         </p>
