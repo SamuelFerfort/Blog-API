@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
         }
       }
     };
-
+    
     checkLoggedIn();
   }, []);
 
