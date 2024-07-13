@@ -23,7 +23,7 @@ export default function Header() {
             />
           </svg>
           <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-            Luminary
+            New Path
           </span>
         </Link>
         <div className="flex items-center space-x-4">

@@ -7,3 +7,6 @@
     @apply bg-gray-900 text-gray-200;
   }
 }
+.prose img {
+    @apply w-full h-96 object-cover rounded-lg shadow-lg object-center; /* Tailwind classes for maximum height and cover fit */
+  }

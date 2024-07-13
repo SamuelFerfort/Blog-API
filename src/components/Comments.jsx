@@ -18,7 +18,7 @@ export default function Comments() {
 
   const sortedComments = useMemo(() => {
     return [...(fetchedComments || [])].sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      (a, b) => new Date(b.createdAt) + new Date(a.createdAt)
     );
   }, [fetchedComments]);
 
@@ -102,7 +102,7 @@ export default function Comments() {
           name="content"
           className="h-10 p-2 border border-gray-600 rounded-md bg-gray-700 text-gray-200"
           id="content"
-          value={newComment}
+          value={user ? newComment : ""}
           onChange={handleChange}
           placeholder={user ? "Great article..." : "Log in to comment"}
         />

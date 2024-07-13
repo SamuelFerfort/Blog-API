@@ -2,12 +2,16 @@ import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import PostPreview from "../components/PostPreview";
 import Loading from "../components/Loading";
+import useTitle from "../hooks/useTitle";
+
 export default function Home() {
   const {
     data: posts,
     isLoading,
     error,
   } = useFetch("http://localhost:3000/api/posts");
+
+  useTitle("New Path")
 
   if (isLoading) return <Loading />
 

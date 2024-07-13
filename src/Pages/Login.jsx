@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import useTitle from "../hooks/useTitle";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,8 +12,13 @@ export default function Login() {
     password: false,
     general: false,
   });
-  const { login, loading } = useAuth();
+  const { login, loading, user } = useAuth();
+
+
+  useTitle("Login");
   const navigate = useNavigate();
+
+  if (user) return navigate("/");
 
   async function handleSubmit(e) {
     e.preventDefault();
