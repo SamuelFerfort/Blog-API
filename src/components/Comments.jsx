@@ -1,19 +1,29 @@
 import useFetch from "../hooks/useFetch";
 import { useAuth } from "../contexts/AuthContext";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { format, parseISO } from 'date-fns';
+import { useState, useMemo } from "react";
 
 export default function Comments() {
   const { postId } = useParams();
 
   const { user } = useAuth();
   const {
-    data: comments,
+    data: fetchedComments,
     isLoading,
     error,
-    setData,
+    setData: setComments,
   } = useFetch(`http://localhost:3000/api/comments/post/${postId}`);
   const [newComment, setNewComment] = useState("");
+
+
+  
+  const sortedComments = useMemo(() => {
+    return [...(fetchedComments || [])].sort((a, b) => 
+      new Date(b.createdAt) - new Date(a.createdAt)
+    );
+  }, [fetchedComments]);
+
 
   const handleChange = (e) => {
     if (!user) return;
@@ -47,7 +57,7 @@ export default function Comments() {
 
       if (data.success) {
        
-        setData((prevComments) => [...prevComments, data.comment]);
+        setComments((prevComments) => [...prevComments, data.comment]);
         setNewComment("");
       } else {
         console.error("Failed to post comment:", data.message);
@@ -55,6 +65,10 @@ export default function Comments() {
     } catch (err) {
       console.error("Error posting comment:", err);
     }
+  };
+
+  const formatDate = (dateString) => {
+    return format(parseISO(dateString), 'MMM d, yyyy h:mm a');
   };
 
   if (isLoading) {
@@ -69,12 +83,12 @@ export default function Comments() {
       <h1 className="text-2xl font-semibold mb-4">Comments</h1>
 
       <div className="flex flex-col space-y-4">
-        {comments.map((comment) => {
+        {sortedComments.map((comment) => {
           return (
-            <article key={comment._id} className="p-4 bg-gray-100 rounded-lg">
+            <article key={comment._id} className="p-4 bg-gray-100 rounded-lg flex flex-col gap-3">
               <h1 className="text-xl font-medium">{comment.author.name}</h1>
               <p className="text-gray-700">{comment.content}</p>
-              <p className="text-gray-500 text-sm">{comment.createdAt}</p>
+              <p className="text-gray-500 text-sm">{formatDate(comment.createdAt)}</p>
             </article>
           );
         })}
@@ -96,7 +110,7 @@ export default function Comments() {
         />
         <button
           type="submit"
-          className="self-end px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          className="self-start px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
         >
           Add Comment
         </button>
