@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import Comments from "../components/Comments";
 
 export default function Post() {
   const { postId } = useParams();
@@ -10,7 +11,6 @@ export default function Post() {
     error,
   } = useFetch(`http://localhost:3000/api/posts/${postId}`);
 
-  console.log(post);
 
   if (isLoading) {
     return (
@@ -58,6 +58,7 @@ export default function Post() {
           ))}
         </div>
       </article>
+      <Comments />
     </main>
   );
 }
