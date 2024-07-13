@@ -8,5 +8,24 @@
   }
 }
 .prose img {
-    @apply w-full h-96 object-cover rounded-lg shadow-lg object-center; /* Tailwind classes for maximum height and cover fit */
+  @apply w-full h-96 object-cover rounded-lg shadow-lg object-center;
+   /* Tailwind classes for maximum height and cover fit */
+
+   view-timeline-name: --reveal;
+   animation-name: show;
+   animation-fill-mode: both;
+   animation-timeline: --reveal;
+   animation-range: entry 25% cover 50%
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    scale: 10%;
   }
+
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
+}
