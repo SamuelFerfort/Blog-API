@@ -38,7 +38,7 @@ export default function Login() {
   }
 
   return (
-    <main className="flex items-center justify-center min-h-screen pt-16 bg-gray-100">
+    <main className="flex justify-center items-center  pt-32">
       <form
         className="w-full max-w-md bg-white p-8 rounded-lg shadow-md"
         method="post"
@@ -75,7 +75,6 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             required
             value={password}
-            minLength="6"
             className="w-full p-2 mt-2 border border-gray-300 rounded"
           />
           {error.password && (

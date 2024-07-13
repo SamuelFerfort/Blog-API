@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Comments from "../components/Comments";
+import dateFormatter from "../utils/dateFormatter";
 
 export default function Post() {
   const { postId } = useParams();
@@ -14,7 +15,7 @@ export default function Post() {
   if (isLoading) {
     return (
       <main className="flex justify-center h-screen pt-11">
-        <div className="p-5 rounded-lg shadow-lg bg-white">
+        <div className="p-5 rounded-lg shadow-lg">
           <svg
             className="animate-spin h-12 w-12 text-indigo-600 mx-auto mb-4"
             xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +44,6 @@ export default function Post() {
     );
   }
 
-  
   if (error) {
     return (
       <main className="flex justify-center items-center h-screen">
@@ -60,8 +60,20 @@ export default function Post() {
   }
 
   return (
-    <main className="p-4 max-w-3xl mx-auto">
-      <article>
+    <main className=" max-w-4xl mx-auto  rounded-full">
+      <article className=" pt-8 ">
+        <div className="flex flex-col gap-3 mb-8">
+          <div className="flex justify-between">
+            <span>Written By:</span>
+            <span>{post.author.name}</span>
+          </div>
+          <div className="flex flex-col gap-3">
+            <div className="flex justify-between">
+              <span>Posted on:</span>
+              <span>{dateFormatter(post.createdAt)}</span>
+            </div>
+          </div>
+        </div>
         <h1 className="text-3xl font-bold mb-6">{post.title}</h1>
         <img
           src={post.mainImage}

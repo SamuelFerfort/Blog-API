@@ -56,7 +56,7 @@ export default function Register() {
   };
 
   return (
-    <main className="flex items-center justify-center min-h-screen pt-16 bg-gray-100">
+    <main className="flex items-center justify-center  pt-32 bg-gray-100">
       <form
         className="w-full max-w-md bg-white p-8 rounded-lg shadow-md"
         method="post"

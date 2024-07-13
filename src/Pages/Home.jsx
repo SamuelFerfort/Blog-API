@@ -11,7 +11,7 @@ export default function Home() {
   if (isLoading) {
     return (
       <main className="flex justify-center h-screen pt-11">
-        <div className="p-5 rounded-lg shadow-lg bg-white">
+        <div className="p-5 rounded-lg shadow-lg">
           <svg
             className="animate-spin h-12 w-12 text-indigo-600 mx-auto mb-4"
             xmlns="http://www.w3.org/2000/svg"

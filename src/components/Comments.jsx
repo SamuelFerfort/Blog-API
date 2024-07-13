@@ -1,8 +1,8 @@
 import useFetch from "../hooks/useFetch";
 import { useAuth } from "../contexts/AuthContext";
 import { useParams } from "react-router-dom";
-import { format, parseISO } from 'date-fns';
 import { useState, useMemo } from "react";
+import dateFormatter from "../utils/dateFormatter";
 
 export default function Comments() {
   const { postId } = useParams();
@@ -16,14 +16,11 @@ export default function Comments() {
   } = useFetch(`http://localhost:3000/api/comments/post/${postId}`);
   const [newComment, setNewComment] = useState("");
 
-
-  
   const sortedComments = useMemo(() => {
-    return [...(fetchedComments || [])].sort((a, b) => 
-      new Date(b.createdAt) - new Date(a.createdAt)
+    return [...(fetchedComments || [])].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
     );
   }, [fetchedComments]);
-
 
   const handleChange = (e) => {
     if (!user) return;
@@ -34,10 +31,9 @@ export default function Comments() {
     e.preventDefault();
     if (!newComment || !user) return;
 
-
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
-      console.error('No token found');
+      console.error("No token found");
       return;
     }
     try {
@@ -45,7 +41,7 @@ export default function Comments() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           postId,
@@ -56,7 +52,6 @@ export default function Comments() {
       const data = await response.json();
 
       if (data.success) {
-       
         setComments((prevComments) => [...prevComments, data.comment]);
         setNewComment("");
       } else {
@@ -65,10 +60,6 @@ export default function Comments() {
     } catch (err) {
       console.error("Error posting comment:", err);
     }
-  };
-
-  const formatDate = (dateString) => {
-    return format(parseISO(dateString), 'MMM d, yyyy h:mm a');
   };
 
   if (isLoading) {
@@ -85,10 +76,15 @@ export default function Comments() {
       <div className="flex flex-col space-y-4">
         {sortedComments.map((comment) => {
           return (
-            <article key={comment._id} className="p-4 bg-gray-100 rounded-lg flex flex-col gap-3">
+            <article
+              key={comment._id}
+              className="p-4 bg-white rounded-lg flex flex-col gap-3 shadow-lg"
+            >
               <h1 className="text-xl font-medium">{comment.author.name}</h1>
               <p className="text-gray-700">{comment.content}</p>
-              <p className="text-gray-500 text-sm">{formatDate(comment.createdAt)}</p>
+              <p className="text-gray-500 text-sm">
+                {dateFormatter(comment.createdAt)}
+              </p>
             </article>
           );
         })}
