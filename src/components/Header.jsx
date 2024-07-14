@@ -38,12 +38,20 @@ export default function Header() {
               </button>
             </>
           ) : (
-            <Link
-              to="login"
-              className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
-            >
-              Log In
-            </Link>
+            <>
+              <Link
+                to="login"
+                className=" text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
+              >
+                Log In
+              </Link>
+              <Link
+                to="sign-up"
+                className=" text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
+              >
+                Sign Up
+              </Link>
+            </>
           )}
         </div>
       </div>
