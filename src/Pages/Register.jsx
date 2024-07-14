@@ -3,7 +3,6 @@ import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
 
-
 export default function Register() {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,7 +11,7 @@ export default function Register() {
   });
   const [errors, setErrors] = useState({});
   const { register, loading, user } = useAuth();
-  useTitle("Register")
+  useTitle("Sign Up");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +30,7 @@ export default function Register() {
 
   const navigate = useNavigate();
 
-  if(user) navigate("/")
+  if (user) navigate("/");
 
   const validateForm = () => {
     const newErrors = {};
