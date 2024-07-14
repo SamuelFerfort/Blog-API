@@ -9,7 +9,7 @@
 }
 .prose img {
   @apply w-full h-96 object-cover rounded-lg shadow-lg object-center;
-   /* Tailwind classes for maximum height and cover fit */
+   
 
    view-timeline-name: --reveal;
    animation-name: show;
