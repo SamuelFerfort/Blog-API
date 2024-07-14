@@ -41,15 +41,15 @@ export default function Header() {
             <>
               <Link
                 to="login"
-                className=" text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
+                className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
               >
-                Log In
+                Log in
               </Link>
               <Link
                 to="sign-up"
-                className=" text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
+                className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
               >
-                Sign Up
+                Sign up
               </Link>
             </>
           )}
