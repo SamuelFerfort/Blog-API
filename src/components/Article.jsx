@@ -1,5 +1,5 @@
 import dateFormatter from "../utils/dateFormatter";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 export default function Article({ post }) {
   return (
@@ -40,14 +40,14 @@ export default function Article({ post }) {
 }
 
 Article.propTypes = {
-    post: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      author: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      }).isRequired,
-      createdAt: PropTypes.instanceOf(Date).isRequired,
-      mainImage: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
-      tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  post: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
     }).isRequired,
-  };
+    createdAt: PropTypes.string.isRequired,
+    mainImage: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+};
