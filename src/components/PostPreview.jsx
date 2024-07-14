@@ -1,17 +1,28 @@
 import PropTypes from "prop-types";
-
+import { UserCircle, Calendar } from "lucide-react";
+import dateFormatter from "../utils/dateFormatter";
 export default function PostPreview({ post }) {
   return (
-    <div className="flex flex-col h-full max-w-sm rounded overflow-hidden shadow-lg m-4 bg-gray-800 text-gray-200">
+    <div className="flex flex-col h-full max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-gray-800 text-gray-200">
       <img
         className="w-full h-48 object-cover"
         src={post.mainImage}
         alt={post.title}
       />
       <div className="px-6 py-4 flex-grow flex flex-col">
-        <h2 className="font-bold text-xl mb-2 text-gray-100 line-clamp-2">
+        <h2 className="font-bold text-xl mb-3 text-gray-100 line-clamp-2">
           {post.title}
         </h2>
+        <div className="flex items-center text-sm text-gray-400 mb-3 space-x-4">
+          <div className="flex items-center">
+            <UserCircle size={16} className="mr-1" />
+            <span>{post.author.name}</span>
+          </div>
+          <div className="flex items-center">
+            <Calendar size={16} className="mr-1" />
+            <span>{dateFormatter(post.createdAt)}</span>
+          </div>
+        </div>
         <p className="text-gray-400 text-base flex-grow line-clamp-3">
           {post.summary}
         </p>
@@ -36,5 +47,9 @@ PostPreview.propTypes = {
     title: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    createdAt: PropTypes.string.isRequired,
   }).isRequired,
 };

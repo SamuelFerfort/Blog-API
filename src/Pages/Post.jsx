@@ -25,7 +25,7 @@ export default function Post() {
       </main>
     );
   }
-  
+
   return (
     <main className="max-w-4xl mx-auto rounded-lg bg-gray-900 text-gray-200 p-6">
       <Article post={post} />

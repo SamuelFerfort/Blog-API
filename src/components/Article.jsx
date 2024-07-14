@@ -1,5 +1,6 @@
 import dateFormatter from "../utils/dateFormatter";
 import PropTypes from "prop-types";
+import { UserCircle, Calendar } from "lucide-react";
 
 export default function Article({ post }) {
   return (
@@ -7,8 +8,14 @@ export default function Article({ post }) {
       <header className="space-y-2">
         <h1 className="text-3xl font-bold text-gray-100">{post.title}</h1>
         <div className="flex justify-between text-sm text-gray-400">
-          <span>By {post.author.name}</span>
-          <span>{dateFormatter(post.createdAt)}</span>
+          <span className="flex items-center">
+            <UserCircle size={16} className="mr-1" /> {post.author.name}
+          </span>
+
+          <span className="flex items-center">
+            <Calendar size={16} className="mr-1" />
+            {dateFormatter(post.createdAt)}
+          </span>
         </div>
       </header>
 
