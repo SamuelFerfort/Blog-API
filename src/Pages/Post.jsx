@@ -4,6 +4,7 @@ import Comments from "../components/Comments";
 import Loading from "../components/Loading";
 import useTitle from "../hooks/useTitle";
 import Article from "../components/Article";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Post() {
   const { postId } = useParams();

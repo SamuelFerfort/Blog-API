@@ -3,6 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useParams } from "react-router-dom";
 import { useState, useMemo } from "react";
 import dateFormatter from "../utils/dateFormatter";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Comments() {
   const { postId } = useParams();

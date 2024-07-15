@@ -3,17 +3,14 @@ import { Link } from "react-router-dom";
 import PostPreview from "../components/PostPreview";
 import Loading from "../components/Loading";
 import useTitle from "../hooks/useTitle";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Home() {
-  const {
-    data: posts,
-    isLoading,
-    error,
-  } = useFetch(`${API_URL}/api/posts`);
+  const { data: posts, isLoading, error } = useFetch(`${API_URL}/api/posts`);
 
-  useTitle("New Path")
+  useTitle("New Path");
 
-  if (isLoading) return <Loading />
+  if (isLoading) return <Loading />;
 
   if (error || !posts) {
     return (

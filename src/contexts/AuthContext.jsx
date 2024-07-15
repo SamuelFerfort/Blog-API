@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { jwtDecode } from "jwt-decode";
 import PropTypes from "prop-types";
-
+const API_URL = import.meta.env.VITE_API_URL;
 
 const AuthContext = createContext(null);
 
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
         }
       }
     };
-    
+
     checkLoggedIn();
   }, []);
 
@@ -101,6 +101,5 @@ export const AuthProvider = ({ children }) => {
 AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
 
 export const useAuth = () => useContext(AuthContext);
