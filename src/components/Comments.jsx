@@ -13,7 +13,7 @@ export default function Comments() {
     isLoading,
     error,
     setData: setComments,
-  } = useFetch(`http://localhost:3000/api/comments/post/${postId}`);
+  } = useFetch(`${API_URL}/api/comments/post/${postId}`);
   const [newComment, setNewComment] = useState("");
 
   const sortedComments = useMemo(() => {
@@ -37,7 +37,7 @@ export default function Comments() {
       return;
     }
     try {
-      const response = await fetch("http://localhost:3000/api/comments", {
+      const response = await fetch(`${API_URL}/api/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -12,7 +12,7 @@ export default function Post() {
     data: post,
     isLoading,
     error,
-  } = useFetch(`http://localhost:3000/api/posts/${postId}`);
+  } = useFetch(`${API_URL}/api/posts/${postId}`);
 
   useTitle(post ? post.title : "Loading...");
 
