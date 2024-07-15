@@ -13,8 +13,8 @@ export default function PostPreview({ post }) {
         <h2 className="font-bold text-xl mb-3 text-gray-100 line-clamp-2">
           {post.title}
         </h2>
-        <div className="flex items-center text-sm text-gray-400 mb-3 space-x-4">
-          <div className="flex items-center">
+        <div className="flex items-center justify-between text-sm text-gray-400 mb-3 space-x-4">
+          <div className="flex items-center ">
             <UserCircle size={16} className="mr-1" />
             <span>{post.author.name}</span>
           </div>
