@@ -9,7 +9,6 @@ export default function Home() {
   const { data: posts, isLoading, error } = useFetch(`${API_URL}/api/posts`);
 
   useTitle("New Path");
-
   if (isLoading) return <Loading />;
 
   if (error || !posts) {

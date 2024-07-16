@@ -12,7 +12,7 @@ export default function Register() {
   const [errors, setErrors] = useState({});
   const { register, loading, user } = useAuth();
   useTitle("Sign Up");
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
