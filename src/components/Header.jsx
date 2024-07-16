@@ -10,7 +10,7 @@ export default function Header() {
         <Link to="/" className="flex items-center space-x-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-purple-500"
+            className="h-4 w-4 text-purple-500 sm:h-8 sm:w-8"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -26,7 +26,7 @@ export default function Header() {
             New Path
           </span>
         </Link>
-        <div className="flex items-center gap-4 text-wrap">
+        <div className="flex items-center gap-2 sm:gap-4 text-wrap">
           {user ? (
             <>
               <span className="text-gray-300 text-sm sm:text-base">Welcome, {user.name}</span>
