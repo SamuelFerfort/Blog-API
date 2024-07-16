@@ -22,7 +22,7 @@ export default function Header() {
               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
             />
           </svg>
-          <span className="font-bold bg-clip-text text-transparent bg-purple-600 text-base sm:text-2xl">
+          <span className="font-bold bg-clip-text text-transparent bg-purple-600 text-lg sm:text-2xl">
             New Path
           </span>
         </Link>
@@ -32,7 +32,7 @@ export default function Header() {
               <span className="text-gray-300 text-sm sm:text-base">Welcome, {user.name}</span>
               <button
                 onClick={logout}
-                className="bg-purple-600 text-sm sm:text-base text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
+                className="bg-purple-600 text-sm sm:text-base text-white px-2 py-1 rounded hover:bg-purple-700 transition duration-300 sm:px-4 sm:py-2"
               >
                 Log Out
               </button>
@@ -41,13 +41,13 @@ export default function Header() {
             <>
               <Link
                 to="login"
-                className="bg-purple-600   text-white text-sm sm:text-base  px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
+                className="bg-purple-600   text-white text-sm sm:text-base  px-2 py-1 rounded hover:bg-purple-700 transition duration-300 sm:px-4 sm:py-2"
               >
                 Log in
               </Link>
               <Link
                 to="sign-up"
-                className="bg-purple-600 text-sm sm:text-base text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300"
+                className="bg-purple-600 text-sm sm:text-base text-white px-2 py-1 rounded hover:bg-purple-700 transition duration-300 sm:px-4 sm:py-2 "
               >
                 Sign up
               </Link>
