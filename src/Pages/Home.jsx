@@ -1,23 +1,27 @@
-import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import PostPreview from "../components/PostPreview";
 import Loading from "../components/Loading";
 import useTitle from "../hooks/useTitle";
+import { useQuery } from "@tanstack/react-query";
 const API_URL = import.meta.env.VITE_API_URL;
+import Error from "../components/Error";
 
 export default function Home() {
-  const { data: posts, isLoading, error } = useFetch(`${API_URL}/api/posts`);
+  // const { data: posts, isLoading, error } = useFetch(`${API_URL}/api/posts`);
+
+  const {
+    isPending,
+    error,
+    data: posts,
+  } = useQuery({
+    queryKey: ["posts"],
+    queryFn: () => fetch(`${API_URL}/api/posts`).then((res) => res.json()),
+  });
 
   useTitle("New Path");
-  if (isLoading) return <Loading />;
+  if (isPending) return <Loading />;
 
-  if (error || !posts) {
-    return (
-      <main className="flex justify-center items-center h-screen bg-gray-900">
-        <p className="text-lg text-red-400">Error Fetching posts</p>
-      </main>
-    );
-  }
+  if (error) return <Error error={error} />;
 
   return (
     <main className="p-7 flex justify-center bg-gray-900 min-h-screen">
