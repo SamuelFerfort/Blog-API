@@ -5,7 +5,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 function App() {
   return (
     <AuthProvider>
-      <div className="min-h-screen bg-gray-900 text-gray-200 ">
+      <div className="min-h-screen bg-gray-900 text-gray-200 font-sans ">
         <Header />
         <Outlet />
       </div>
