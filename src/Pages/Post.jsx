@@ -1,31 +1,31 @@
 import { useParams } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
 import Comments from "../components/Comments";
 import Loading from "../components/Loading";
 import useTitle from "../hooks/useTitle";
 import Article from "../components/Article";
 const API_URL = import.meta.env.VITE_API_URL;
+import { useQuery } from "@tanstack/react-query";
+import Error from "../components/Error";
 
 export default function Post() {
   const { postId } = useParams();
 
   const {
-    data: post,
-    isLoading,
+    isPending,
     error,
-  } = useFetch(`${API_URL}/api/posts/${postId}`);
+    data: post,
+  } = useQuery({
+    queryKey: ["post", postId],
+    queryFn: () =>
+      fetch(`${API_URL}/api/posts/${postId}`).then((res) => res.json()),
+    enabled: !!postId,
+  });
 
   useTitle(post ? post.title : "Loading...");
 
-  if (isLoading) return <Loading />;
+  if (isPending) return <Loading />;
 
-  if (error) {
-    return (
-      <main className="flex justify-center">
-        <p className="text-lg text-red-400">{error}</p>
-      </main>
-    );
-  }
+  if (error) return <Error error={error} />;
 
   return (
     <main className="max-w-4xl mx-auto rounded-lg bg-gray-900 text-gray-200 p-6">
