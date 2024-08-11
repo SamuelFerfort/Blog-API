@@ -20,7 +20,6 @@ export default function Post() {
       fetch(`${API_URL}/api/posts/${postId}`).then((res) => res.json()),
     enabled: !!postId,
   });
-
   useTitle(post ? post.title : "Loading...");
 
   if (isPending) return <Loading />;

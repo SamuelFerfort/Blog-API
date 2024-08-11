@@ -3,7 +3,7 @@ import { UserCircle, Calendar } from "lucide-react";
 import dateFormatter from "../utils/dateFormatter";
 export default function PostPreview({ post }) {
   return (
-    <div className="flex flex-col h-full max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-gray-800 text-gray-200">
+    <div className="flex flex-col  max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-gray-800 text-gray-200">
       <img
         className="w-full h-48 object-cover"
         src={post.mainImage}
@@ -33,7 +33,7 @@ export default function PostPreview({ post }) {
             key={index}
             className="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-300 mr-2 mb-2"
           >
-            #{tag}
+            #{tag.name}
           </span>
         ))}
       </div>

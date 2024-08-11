@@ -17,7 +17,6 @@ export default function Home() {
     queryKey: ["posts"],
     queryFn: () => fetch(`${API_URL}/api/posts`).then((res) => res.json()),
   });
-
   useTitle("New Path");
   if (isPending) return <Loading />;
 
@@ -28,8 +27,8 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 ">
         {posts.map((post) => (
           <Link
-            key={post._id}
-            to={`/post/${post._id}`}
+            key={post.id}
+            to={`/post/${post.id}`}
             className="hover:opacity-80 transition-opacity"
           >
             <PostPreview post={post} />

@@ -77,7 +77,7 @@ export default function Comments() {
             </h1>
             <p className="text-gray-300">{comment.content}</p>
             <p className="text-gray-500 text-sm">
-              {dateFormatter(comment.createdAt)}
+              {dateFormatter(comment.CreatedAt)}
             </p>
           </article>
         ))}

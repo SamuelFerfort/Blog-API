@@ -37,7 +37,7 @@ export default function Article({ post }) {
               key={index}
               className="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-300"
             >
-              #{tag}
+              #{tag.name}
             </span>
           ))}
         </div>
