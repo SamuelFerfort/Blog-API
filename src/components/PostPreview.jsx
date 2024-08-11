@@ -46,10 +46,10 @@ PostPreview.propTypes = {
     mainImage: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     author: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
     createdAt: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
 };
