@@ -29,7 +29,7 @@ export default function Home() {
           <Link
             key={post.id}
             to={`/post/${post.id}`}
-            className="hover:opacity-80 transition-opacity"
+            className="hover:opacity-85 transition-contrast"
           >
             <PostPreview post={post} />
           </Link>
