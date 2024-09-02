@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
+import ActionButton from "../components/ActionButton";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -12,7 +13,7 @@ export default function Register() {
   const [errors, setErrors] = useState({});
   const { register, loading, user } = useAuth();
   useTitle("Sign Up");
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -122,15 +123,13 @@ export default function Register() {
         {errors.general && (
           <div className="text-red-400 text-sm mb-4">{errors.general}</div>
         )}
-        {loading && <div className="text-gray-400 mb-4">Loading...</div>}
 
         <div>
-          <button
-            type="submit"
-            className="w-full bg-purple-600 text-white p-2 rounded hover:bg-purple-700 transition duration-300"
-          >
-            Sign Up
-          </button>
+          <ActionButton
+            loading={loading}
+            idleText="Sign up"
+            loadingText="Creating account..."
+          />
         </div>
 
         <p className="mt-4 text-gray-400">
