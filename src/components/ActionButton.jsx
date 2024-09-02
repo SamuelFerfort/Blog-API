@@ -1,11 +1,7 @@
 import { Loader2 } from "lucide-react";
 import PropTypes from "prop-types";
 
-ActionButton.propTypes = {
-  loading: PropTypes.bool,
-  idleText: PropTypes.string,
-  loadingText: PropTypes.string,
-};
+
 
 const ActionButton = ({ loading, idleText, loadingText }) => (
   <button
@@ -23,5 +19,11 @@ const ActionButton = ({ loading, idleText, loadingText }) => (
     )}
   </button>
 );
+
+ActionButton.propTypes = {
+    loading: PropTypes.bool,
+    idleText: PropTypes.string,
+    loadingText: PropTypes.string,
+  };
 
 export default ActionButton;
