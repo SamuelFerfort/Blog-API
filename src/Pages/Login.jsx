@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import useTitle from "../hooks/useTitle";
-
+import ActionButton from "../components/ActionButton";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -13,7 +13,6 @@ export default function Login() {
     general: false,
   });
   const { login, loading, user } = useAuth();
-
 
   useTitle("Login");
   const navigate = useNavigate();
@@ -93,15 +92,13 @@ export default function Login() {
         {error.general && (
           <div className="text-red-400 text-sm mb-4">{error.general}</div>
         )}
-        {loading && <div className="text-gray-400 mb-4">Loading...</div>}
 
         <div>
-          <button
-            type="submit"
-            className="w-full bg-purple-600 text-white p-2 rounded hover:bg-purple-700 transition duration-300"
-          >
-            Log In
-          </button>
+          <ActionButton
+            loading={loading}
+            idleText="Log in"
+            loadingText="Logging in..."
+          />
         </div>
 
         <p className="mt-4 text-gray-400">
